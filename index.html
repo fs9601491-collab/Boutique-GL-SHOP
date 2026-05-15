@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>GL-SHOP</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        /* ARRIERE-PLAN STYLISÉ */
+        body {
+            background-color: #fff0f3;
+            background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+            background-attachment: fixed;
+            font-family: 'Segoe UI', sans-serif;
+            color: #590d22;
+        }
+
+        header { padding: 50px 0; text-align: center; }
+        .phrase-bienvenue { color: #ff4d6d; letter-spacing: 6px; font-weight: bold; margin-bottom: 5px; text-transform: uppercase; }
+        .logo { font-size: 4.5rem; font-weight: 900; margin: 0; }
+
+        /* CARTES ARTICLES SEMI-TRANSPARENTES */
+        .carte {
+            background: rgba(255, 255, 255, 0.3); 
+            backdrop-filter: blur(5px);
+            border-radius: 35px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 204, 213, 0.5);
+            transition: 0.3s;
+            height: 100%;
+        }
+        .carte:hover { transform: translateY(-10px); background: rgba(255, 255, 255, 0.5); }
+
+        /* IMAGES XL SANS FOND BLANC */
+        .boite-photo {
+            height: 380px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .boite-photo img {
+            max-height: 100%;
+            max-width: 100%;
+            mix-blend-mode: multiply; 
+        }
+
+        .prix { font-size: 1.6rem; color: #ff4d6d; font-weight: bold; margin-bottom: 15px; }
+
+        .btn-ajouter {
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+
+        /* PANIER SANS FOND BLANC */
+        .panier-fixe {
+            background: rgba(255, 255, 255, 0.2); 
+            backdrop-filter: blur(10px);
+            border-radius: 35px;
+            padding: 35px;
+            position: sticky;
+            top: 20px;
+            border: 2px solid #ffccd5;
+        }
+
+        .btn-valider {
+            background: #2b9348;
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .pay-options { display: none; margin-top: 20px; text-align: center; }
+        .pay-btn { border: none; padding: 10px 20px; border-radius: 12px; color: white; font-weight: bold; margin: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container pb-5">
+    <header>
+        <p class="phrase-bienvenue">Bienvenue Chez</p>
+        <h1 class="logo">GL-SHOP</h1>
+    </header>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="row g-4">
+                
+                <!-- 1 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/ordinateur.jpeg"></div>
+                        <h4>Ordinateur</h4>
+                        <p class="prix">200 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('ordinateur', 200000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 2 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/pantalon.jpeg"></div>
+                        <h4>Pantalon</h4>
+                        <p class="prix">8 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Pantalon', 8000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 3 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/chaussure.jpeg"></div>
+                        <h4>Chaussure</h4>
+                        <p class="prix">25 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('chaussure', 25000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 4 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/montre.jpeg"></div>
+                        <h4>Montre</h4>
+                        <p class="prix">12 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Montre', 12000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 5 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/sac.jpeg"></div>
+                        <h4>Sac à main </h4>
+                        <p class="prix">10 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Sac', 10000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 6 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/ensemble.jpeg"></div>
+                        <h4>Ensemble</h4>
+                        <p class="prix">20 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Ensemble', 60000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 7 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/parfum.jpeg"></div>
+                        <h4>Parfum</h4>
+                        <p class="prix">7 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Parfum', 7000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 8 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/voile.jpeg"></div>
+                        <h4>Voile</h4>
+                        <p class="prix">2 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Voile', 2000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 9 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/poile.jpeg"></div>
+                        <h4>Poile</h4>
+                        <p class="prix">6 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Poile', 6000)">Ajouter</button>
+                    </div>
+                </div>
+
+                <!-- 10 -->
+                <div class="col-md-6">
+                    <div class="carte">
+                        <div class="boite-photo"><img src="image/chauffe eau.jpeg"></div>
+                        <h4>Chauffe eau</h4>
+                        <p class="prix">5 000 F</p>
+                        <button class="btn-ajouter" onclick="ajouter('Chauffe eau', 5000)">Ajouter</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- LE PANIER -->
+        <div class="col-lg-4">
+            <div class="panier-fixe">
+                <h3 class="text-center">Panier</h3>
+                <div id="p-liste" class="mt-4">
+                    <p class="text-center text-muted">Votre panier est vide</p>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between fs-4 fw-bold">
+                    <span>Total:</span>
+                    <span id="p-total" style="color: #ff4d6d;">0 F</span>
+                </div>
+                <button class="btn-valider" onclick="ouvrirPaye()">VALIDER LA COMMANDE</button>
+
+                <div id="pay-options" class="pay-options">
+                    <p class="small fw-bold">Paiement sécurisé :</p>
+                    <button class="pay-btn" style="background: #1c93e4" onclick="fin('Wave')">Wave</button>
+                    <button class="pay-btn" style="background: #ff6600" onclick="fin('OM')">Orange Money</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
